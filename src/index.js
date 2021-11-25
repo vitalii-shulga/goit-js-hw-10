@@ -23,7 +23,7 @@ function onCountryInput() {
       countryInfo.innerHTML = ''
       if (countries.length === 1) {
         countryList.insertAdjacentHTML('beforeend', renderCountryList(countries))
-        countryInfo.insertAdjacentHTML('beforeend', renderCountryCard(countries))
+        countryInfo.insertAdjacentHTML('beforeend', renderCountryInfo(countries))
       } else if (countries.length > 10) {
         alertTooManyMatches()
       } else {
@@ -47,14 +47,14 @@ function renderCountryList(countries) {
   return markup
 }
 
-function renderCountryCard(countries) {
+function renderCountryInfo(countries) {
   const markup = countries
-    .map(({ name, flags, capital, population, languages }) => {
+    .map(({ capital, population, languages }) => {
       return `
         <ul class="country-info__list">
             <li class="country-info__item"><p><b>Capital: </b>${capital}</p></li>
-            <li class="country-info__item"><p><b>Languages: </b>${Object.values(languages).join(', ')}</p></li>
             <li class="country-info__item"><p><b>Population: </b>${population}</p></li>
+            <li class="country-info__item"><p><b>Languages: </b>${Object.values(languages).join(', ')}</p></li>
         </ul>
         `
     })
