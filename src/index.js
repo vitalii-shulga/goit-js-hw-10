@@ -24,7 +24,7 @@ function onCountryInput() {
       if (countries.length === 1) {
         countryList.insertAdjacentHTML('beforeend', renderCountryList(countries))
         countryInfo.insertAdjacentHTML('beforeend', renderCountryInfo(countries))
-      } else if (countries.length > 10) {
+      } else if (countries.length >= 10) {
         alertTooManyMatches()
       } else {
         countryList.insertAdjacentHTML('beforeend', renderCountryList(countries))
@@ -38,8 +38,8 @@ function renderCountryList(countries) {
     .map(({ name, flags }) => {
       return `
           <li class="country-list__item">
-              <img class="country-list__flag" src="${flags.svg}" alt="Flag of ${name.common}" width = 30px height = 30px>
-              <h2 class="country-list__name">${name.common}</h2>
+              <img class="country-list__flag" src="${flags.svg}" alt="Flag of ${name.official}" width = 30px height = 30px>
+              <h2 class="country-list__name">${name.official}</h2>
           </li>
           `
     })
